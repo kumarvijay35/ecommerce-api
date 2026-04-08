@@ -26,6 +26,9 @@ SECRET_KEY = 'django-insecure-d=!n2*$*yveh#x-npedfhm44j=j59-#ikiw64z%n-fnpkiw6rb
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = [
+    "https://ecommerce-api-796y.onrender.com"
+]
 
 
 
