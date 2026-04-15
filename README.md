@@ -4,8 +4,8 @@ A full-featured REST API for an e-commerce platform built with **Django REST Fra
 
 ## 🚀 Live API
 
-Base URL: `https://your-app.railway.app`
-Swagger Docs: `https://your-app.railway.app/api/docs/`
+Base URL: `https://ecommerce-api-796y.onrender.com`
+Swagger Docs: `https://ecommerce-api-796y.onrender.com/api/docs/`
 
 ## ⚙️ Tech Stack
 
@@ -14,7 +14,7 @@ Swagger Docs: `https://your-app.railway.app/api/docs/`
 - PostgreSQL
 - JWT Authentication
 - Razorpay Payment Gateway
-- Deployed on Railway
+- Deployed on Render
 
 ## 📦 Features
 
