@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_spectacular',
 
     # Third party
     'rest_framework',
@@ -149,6 +150,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ),
+    'DEFAULT_SCHEMA_CLASS': ('drf_spectacular.openapi.AutoSchema'),
 }
 
 # JWT
@@ -174,3 +176,15 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+import os
+
+if os.environ.get('CREATE_SUPERUSER') == 'True':
+    from django.contrib.auth import get_user_model
+    User = get_user_model()
+
+    if not User.objects.filter(email="nameisvijay35@gmail.com").exists():
+        User.objects.create_superuser(
+            email="nameisvijay35@gmail.com",
+            password="admin123"
+        )
