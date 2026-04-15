@@ -177,14 +177,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-import os
-
-if os.environ.get('CREATE_SUPERUSER') == 'True':
-    AUTH_USER_MODEL = 'users.User'
-    
-
-    if not User.objects.filter(email="nameisvijay35@gmail.com").exists():
-        User.objects.create_superuser(
-            email="nameisvijay35@gmail.com",
-            password="admin123"
-        )
