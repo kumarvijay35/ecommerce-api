@@ -15,6 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.http import JsonResponse
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -26,6 +27,8 @@ from drf_spectacular.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', api_root),
+    path('admin/', admin.site.urls),
     path('api/users/', include('users.urls')),
     path('api/products/', include('products.urls')),
     path('api/orders/', include('orders.urls')),
@@ -36,3 +39,20 @@ urlpatterns = [
     path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+def api_root(request):
+    return JsonResponse({
+        "name": "E-Commerce REST API",
+        "version": "1.0.0",
+        "docs": request.build_absolute_uri("/api/redoc/"),
+        "swagger": request.build_absolute_uri("/api/docs/"),
+        "schema": request.build_absolute_uri("/api/schema/"),
+        "endpoints": {
+            "users": "/api/users/",
+            "products": "/api/products/",
+            "orders": "/api/orders/",
+        },
+    })
+
+
