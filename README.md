@@ -14,7 +14,7 @@ A production-deployed REST API for an e-commerce platform, built with **Django R
 ## ⚙️ Tech Stack
 
 - **Python 3.11**, **Django 5.2** + Django REST Framework 3.17
-- **PostgreSQL** (Neon) with connection pooling via `dj-database-url`sssss
+- **PostgreSQL** (Neon) with connection pooling via `dj-database-url`
 - **Redis** for caching and as the Celery broker
 - **Celery** for background tasks (email, invoices, webhook processing)
 - **JWT** auth via `djangorestframework-simplejwt` (15-min access tokens, refresh rotation)
