@@ -33,6 +33,14 @@ ALLOWED_HOSTS = [
     if h.strip()
 ]
 
+SPECTACULAR_SETTINGS = {
+    "TITLE": "E-Commerce REST API",
+    "DESCRIPTION": "Django REST API with JWT auth, RBAC, cart/orders, "
+                   "and Razorpay payments with HMAC webhook verification.",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
+
 # Comma-separated, MUST include the https:// scheme
 CSRF_TRUSTED_ORIGINS = [
     o.strip()
@@ -226,3 +234,4 @@ if EMAIL_HOST_USER:
 else:
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
     DEFAULT_FROM_EMAIL = "noreply@example.com"
+
