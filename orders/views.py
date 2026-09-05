@@ -8,6 +8,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import Cart, CartItem, Order, OrderItem
+from .tasks import send_order_confirmation_email
 from .serializers import CartSerializer, OrderSerializer
 from products.models import Product
 
@@ -152,6 +153,19 @@ class VerifyPaymentView(APIView):
             order.razorpay_payment_id = razorpay_payment_id
             order.razorpay_signature = razorpay_signature
             order.save()
+
+            # Fire async email — does NOT block the response
+            items_summary = ", ".join([
+                f"{item.product.name} x{item.quantity}"
+                for item in order.items.all()
+            ])
+            send_order_confirmation_email.delay(
+                order_id=order.id,
+                user_email=order.user.email,
+                items_summary=items_summary,
+                total_amount=str(order.total_price)
+            )
+
             return Response({
                 'message': 'Payment verified successfully!',
                 'order': OrderSerializer(order).data

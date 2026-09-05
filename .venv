@@ -2,5 +2,5 @@ SECRET_KEY = 'django-insecure-d=!n2*$*yveh#x-npedfhm44j=j59-#ikiw64z%n-fnpkiw6rb
 DEBUG=False
 RAZORPAY_KEY_ID = 'rzp_test_SaQaYSGD6lawxZ'
 RAZORPAY_KEY_SECRET = 'PhIhjAm17112cB2mgv8xrsfC'
-DATABASE_URL = 
-ALLOWED_HOSTS= 
+DATABASE_URL = postgresql://neondb_owner:npg_Z1EjOkD7coVX@ep-wispy-sky-b3lvd3p9-pooler.c-4.ap-southeast-1.aws.neon.tech/neondb?sslmode=require
+ALLOWED_HOSTS= Ecommerce-api-production-695c8.up.railway.app
